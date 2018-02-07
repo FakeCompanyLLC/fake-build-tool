@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Create new project</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput placeholder="Project Name" [(ngModel)]="name" autoFocus>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button mat-button [mat-dialog-close]="name">OK</button>
+</div>

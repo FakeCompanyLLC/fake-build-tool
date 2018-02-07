@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>Create new profile</h1>
+<div mat-dialog-content>
+  <button mat-raised-button (click)="addAll()" color="primary">Add All</button>
+  <mat-list>
+    <mat-list-item *ngFor="let projectInstanceMapping of projectInstanceMappings">
+      <span style="white-space:nowrap;margin-right:30px">{{projectInstanceMapping.project.name.name}}</span>
+      <button mat-icon-button color="primary" (click)="add(projectInstanceMapping)">
+        <mat-icon aria-label="Run" matTooltip="Add">add</mat-icon>
+      </button>
+    </mat-list-item>
+  </mat-list>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data.mappings">OK</button>
+</div>

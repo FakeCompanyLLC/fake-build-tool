@@ -1,0 +1,32 @@
+.field-container {
+  display: flex;
+  flex-direction: column;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-selection-list {
+  outline: none;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+h4 {
+  color: #787878;
+}
+
+.fbt-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-list, .mat-card {
+  padding: 0px;
+}
+
+.profile-form {
+  padding: 20px 20px 0 20px;
+}

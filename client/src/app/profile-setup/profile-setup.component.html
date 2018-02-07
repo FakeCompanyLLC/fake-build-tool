@@ -1,0 +1,43 @@
+<mat-card>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Profile</span>
+      <span class="fbt-spacer"></span>
+      <button mat-icon-button (click)="run()">
+        <mat-icon>play_arrow</mat-icon>
+      </button>
+      <button mat-icon-button (click)="openDialog()">
+        <mat-icon>playlist_add</mat-icon>
+      </button>
+      <button mat-icon-button (click)="save()">
+        <mat-icon>save</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-card-content>
+    <div class="profile-form">
+      <mat-form-field>
+        <input matInput placeholder="Profile Name" [(ngModel)]="profile.name" autoFocus>
+      </mat-form-field>
+    </div>
+    <mat-divider></mat-divider>
+    <mat-list #list>
+      <mat-list-item disableRipple="true" *ngFor="let project of profile.projects; let last = last; let i = index" [attr.data-index]="i" draggable="true" (dragend)="dragend($event)" (dragenter)="dragenter($event)" (dragstart)="dragstart($event)">
+        <h3 mat-line>{{project.project.name.name}}</h3>
+        <mat-select placeholder="Instance" [(value)]="project.instance._id" placeholder="Instance">
+          <mat-option *ngFor="let instance of project.project.instances" [value]="instance._id">
+            {{ instance.name }}
+          </mat-option>
+        </mat-select>
+        <button mat-icon-button color="primary">
+          <mat-icon aria-label="Delete" (click)="delete(i)">delete</mat-icon>
+        </button>
+        <button mat-icon-button color="primary">
+          <mat-icon aria-label="Settings" routerLink="/project/{{project.project._id}}">settings</mat-icon>
+        </button>
+        <mat-divider *ngIf="!last"></mat-divider>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
+<br />

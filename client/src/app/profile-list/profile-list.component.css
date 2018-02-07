@@ -1,0 +1,7 @@
+.fbt-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-list, .mat-card {
+  padding: 0px;
+}

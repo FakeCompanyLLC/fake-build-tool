@@ -1,0 +1,35 @@
+<mat-card>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Project</span>
+      <span class="fbt-spacer"></span>
+      <button mat-icon-button (click)="new()">
+        <mat-icon>playlist_add</mat-icon>
+      </button>
+      <button mat-icon-button (click)="save()">
+        <mat-icon>save</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-card-content>
+    <div class="profile-form">
+      <mat-form-field>
+        <input matInput placeholder="Component Name" [(ngModel)]="project.name.name">
+      </mat-form-field>
+    </div>
+    <mat-divider></mat-divider>
+    <mat-list #list>
+      <mat-list-item *ngFor="let instance of project.instances; let i = index; let last = last">
+        <h3 mat-line>{{instance.name}}</h3>
+        <button mat-icon-button color="primary">
+          <mat-icon aria-label="Delete" (click)="delete(i)" matTooltip="Delete this project">delete</mat-icon>
+        </button>
+        <button mat-icon-button color="primary">
+          <mat-icon aria-label="Settings" (click)="edit(instance)" matTooltip="Edit this instance">settings</mat-icon>
+        </button>
+        <mat-divider *ngIf="!last"></mat-divider>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
+<br />

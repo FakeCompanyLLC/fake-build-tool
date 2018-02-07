@@ -1,0 +1,24 @@
+mat-sidenav button {
+  width: 100%;
+  text-align: left;
+}
+
+mat-sidenav-content {
+  min-height: 400px;
+  padding: 10px;
+}
+
+mat-sidenav {
+  min-width: 200px;
+  max-width: 200px;
+}
+
+.fbt-fill-remaining-space {
+  /* This fills the remaining space, by using flexbox.
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+
+.small {
+  font-size: .5em;
+}

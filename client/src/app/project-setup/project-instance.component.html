@@ -1,0 +1,42 @@
+<h1 mat-dialog-title>Create new instance</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput placeholder="Instance Name" [(ngModel)]="data.instance.name">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Version Override" [(ngModel)]="data.instance['version-override']">
+  </mat-form-field>
+  <div class="button-row">
+    <button mat-raised-button color="primary" (click)="addModule(data.instance)">Add Module</button>
+    <button mat-raised-button color="primary" (click)="addCommand(data.instance)">Add Project</button>
+    <button mat-raised-button color="primary" (click)="addProperty(data.instance)">Add Property</button>
+  </div>
+  <mat-form-field *ngFor="let module of data.instance.modules; let i = index; trackBy:customTrackBy">
+    <input matInput placeholder="Module" [(ngModel)]="data.instance.modules[i]">
+    <mat-icon matSuffix (click)="removeModule(data.instance.modules, i)">delete</mat-icon>
+  </mat-form-field>
+  <mat-form-field *ngFor="let cmd of data.instance.cmd; let i = index; trackBy:customTrackBy" >
+    <input matInput placeholder="Command" [(ngModel)]="data.instance.cmd[i]">
+    <mat-icon matSuffix (click)="removeCommand(data.instance.cmd, i)">delete</mat-icon>
+  </mat-form-field>
+  <mat-form-field *ngFor="let property of data.instance.properties; let i = index; trackBy:customTrackBy" >
+    <input matInput placeholder="Property" [(ngModel)]="data.instance.properties[i]">
+    <mat-icon matSuffix (click)="removeProperty(data.instance.properties, i)">delete</mat-icon>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Profile" [(ngModel)]="data.instance.profile">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Branch" [(ngModel)]="data.instance.branch">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Fork" [(ngModel)]="data.instance.fork">
+  </mat-form-field>
+  <mat-checkbox [(ngModel)]="data.instance.auth">Auth</mat-checkbox>
+  <mat-checkbox [(ngModel)]="data.instance['copy-overrides']">Copy Overrides</mat-checkbox>
+  <mat-checkbox [(ngModel)]="data.instance['replace-subfloor']">Replace Subfloor</mat-checkbox>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data.instance">OK</button>
+</div>
