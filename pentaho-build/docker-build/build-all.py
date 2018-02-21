@@ -38,12 +38,12 @@ commits1d = buildlib.getHistory(cwd, projects, "1 day ago")
 
 print "\nGenerating history reports..."
 buildlib.writeLog(cwd, commits1y, "1 year ago", "1y")
-buildlib.writeLog(cwd, commits180d, "1 year ago", "180d")
-buildlib.writeLog(cwd, commits90d, "1 year ago", "90d")
-buildlib.writeLog(cwd, commits30d, "1 year ago", "30d")
-buildlib.writeLog(cwd, commits7d, "1 year ago", "7d")
-buildlib.writeLog(cwd, commits3d, "1 year ago", "3d")
-buildlib.writeLog(cwd, commits1d, "1 year ago", "1d")
+buildlib.writeLog(cwd, commits180d, "180 days ago", "180d")
+buildlib.writeLog(cwd, commits90d, "90 days ago", "90d")
+buildlib.writeLog(cwd, commits30d, "30 days ago", "30d")
+buildlib.writeLog(cwd, commits7d, "7 days ago", "7d")
+buildlib.writeLog(cwd, commits3d, "3 days ago", "3d")
+buildlib.writeLog(cwd, commits1d, "1 day ago", "1d")
 
 
 # check if changes to ivy.xml or pom.xml exist
