@@ -1,0 +1,36 @@
+<mat-card>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Profiles</span>
+      <span class="fbt-spacer"></span>
+      <button mat-icon-button (click)="add()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-card-content>
+    <mat-list #list>
+      <mat-list-item disableRipple="true" *ngFor="let profile of profiles; let i = index; let last = last">
+        <h3 mat-line>
+          <a routerLink="/profile/{{profile._id}}">{{profile.name}}</a>
+        </h3>
+        <button mat-icon-button color="primary" (click)="run(profile._id)">
+          <mat-icon aria-label="Run" matTooltip="Run this profile">play_arrow</mat-icon>
+        </button>
+        <button mat-icon-button color="primary" routerLink="{{profile._id}}/status">
+          <mat-icon aria-label="Run" matTooltip="Check profile run status">panorama_fish_eye</mat-icon>
+        </button>
+        <button mat-icon-button color="primary" (click)="remove(profile)">
+          <mat-icon aria-label="Delete" matTooltip="Delete this profile">delete</mat-icon>
+        </button>
+        <button mat-icon-button color="primary">
+          <mat-icon aria-label="Settings" routerLink="/profile/{{profile._id}}" matTooltip="Edit this profile">settings</mat-icon>
+        </button>
+        <button mat-icon-button color="primary">
+          <mat-icon aria-label="Copy" matTooltip="Copy this profile" (click)="copy(profile._id)">content_copy</mat-icon>
+        </button>
+        <mat-divider *ngIf="!last"></mat-divider>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
