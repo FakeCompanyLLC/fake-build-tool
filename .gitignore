@@ -1,10 +1,10 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-/client/dist
-/client/dist-server
-/client/tmp
-/client/out-tsc
+console/client/dist
+console/client/dist-server
+console/client/tmp
+console/client/out-tsc
 
 # dependencies
 node_modules

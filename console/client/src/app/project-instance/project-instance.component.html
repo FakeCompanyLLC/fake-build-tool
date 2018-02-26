@@ -8,8 +8,10 @@
   </mat-form-field>
   <div class="button-row">
     <button mat-raised-button color="primary" (click)="addModule(data.instance)">Add Module</button>
-    <button mat-raised-button color="primary" (click)="addCommand(data.instance)">Add Project</button>
+    <button mat-raised-button color="primary" (click)="addCommand(data.instance)">Add Command</button>
     <button mat-raised-button color="primary" (click)="addProperty(data.instance)">Add Property</button>
+    <button mat-raised-button color="primary" (click)="addRemote(data.instance)">Add Remote</button>
+    <button mat-raised-button color="primary" (click)="addCherryPick(data.instance)">Add Cherry Pick</button>
   </div>
   <mat-form-field *ngFor="let module of data.instance.modules; let i = index; trackBy:customTrackBy">
     <input matInput placeholder="Module" [(ngModel)]="data.instance.modules[i]">
@@ -22,6 +24,23 @@
   <mat-form-field *ngFor="let property of data.instance.properties; let i = index; trackBy:customTrackBy" >
     <input matInput placeholder="Property" [(ngModel)]="data.instance.properties[i]">
     <mat-icon matSuffix (click)="removeProperty(data.instance.properties, i)">delete</mat-icon>
+  </mat-form-field>
+  <mat-form-field *ngFor="let remote of data.instance.remotes; let i = index; trackBy:customTrackBy" >
+    <input matInput placeholder="Property" [(ngModel)]="data.instance.remotes[i]">
+    <mat-icon matSuffix (click)="removeRemote(data.instance.remotes, i)">delete</mat-icon>
+  </mat-form-field>
+  <mat-form-field *ngFor="let cherryPick of data.instance['cherry-picks']; let i = index; trackBy:customTrackBy" >
+    <input matInput placeholder="Property" [(ngModel)]="data.instance['cherry-picks'][i]">
+    <mat-icon matSuffix (click)="removeCherryPick(data.instance['cherry-picks'], i)">delete</mat-icon>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Tag" [(ngModel)]="data.instance.tag">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Commit" [(ngModel)]="data.instance.commit">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Revert Commit" [(ngModel)]="data.instance['revert-commit']">
   </mat-form-field>
   <mat-form-field>
     <input matInput placeholder="Profile" [(ngModel)]="data.instance.profile">

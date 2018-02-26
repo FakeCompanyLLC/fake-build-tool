@@ -5,6 +5,7 @@ import { ProjectInstance } from '../project-instance';
 import { FbtService } from '../fbt.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { ProjectInstanceComponent } from '../project-instance/project-instance.component';
 
 @Component({
   selector: 'app-project-setup',
@@ -43,7 +44,7 @@ export class ProjectSetupComponent implements OnInit {
   }
 
   save(instance: ProjectInstance) {
-    if (instance._id) {
+    if (instance && instance._id) {
       this.service.updateProjectInstance(instance._id, instance).subscribe();
     } else {
       console.log(this.project._id);
@@ -62,65 +63,6 @@ export class ProjectSetupComponent implements OnInit {
     dialogRef.afterClosed().subscribe(instance => {
       this.save(instance);
     });
-  }
-
-}
-
-@Component({
-  selector: 'app-project-instance',
-  templateUrl: './project-instance.component.html',
-  styleUrls: ['./project-instance.component.css']
-})
-export class ProjectInstanceComponent implements OnInit {
-
-  constructor(
-    public dialogRef: MatDialogRef<ProjectInstanceComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
-
-  cancel(): void {
-    this.dialogRef.close();
-  }
-
-  ngOnInit() {
-
-  }
-
-  addModule(project) {
-    if (!project.modules) {
-      project.modules = [];
-    }
-    project.modules.push("");
-  }
-
-  addCommand(project) {
-    if (!project.cmd) {
-      project.cmd = [];
-    }
-    project.cmd.push("");
-  }
-
-  addProperty(project) {
-    if (!project.properties) {
-      project.properties = [];
-    }
-    project.properties.push("");
-  }
-
-  customTrackBy(index: number, obj: any): any {
-    return index;
-  }
-
-  removeCommand(commands: any, index: number) {
-    commands.splice(index, 1);
-  }
-
-  removeProperty(properties: any, index: number) {
-    properties.splice(index, 1);
-  }
-
-  removeModule(modules: any, index: number) {
-    modules.splice(index, 1);
   }
 
 }

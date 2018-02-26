@@ -44,7 +44,7 @@ async function load(contents) {
     await save(projectJson);
   }
 }
-load(contents);
+// load(contents);
 
 exports.read_projects = function(req, res) {
   Project.find({}, function(err, projects) {
