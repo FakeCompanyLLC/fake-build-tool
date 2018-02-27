@@ -62,7 +62,7 @@ ADD settings.xml /pentaho/settings.xml
 ADD ivysettings.xml /pentaho/ivysettings.xml
 ADD publish.xml /pentaho/publish.xml
 ADD apache-ant-1.10.1.tar.gz /pentaho
-ADD apache-maven-3.3.9-bin.tar.gz /pentaho
+ADD apache-maven-3.5.2-bin.tar.gz /pentaho
 ADD ant-contrib-1.0b3.jar /pentaho
 ADD ivy-2.4.0.jar /pentaho
 ADD pentaho-ee-ant-tasks-1.1.0.tar /pentaho

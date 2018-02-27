@@ -14,4 +14,6 @@ echo "Building sonatype:nexus2"
 docker build -t sonatype:nexus2 oss
 echo "Starting sonatype:nexus2..."
 cd ..
-docker run -d -p 8081:8081 --name nexus -v `pwd`/nexus-storage:/sonatype-work sonatype:nexus2
+docker rm nexus
+sudo chmod ugo+rwx -R nexus-storage
+docker run -d --dns=10.100.2.155 -p 8081:8081 --name nexus -v `pwd`/nexus-storage:/sonatype-work sonatype:nexus2

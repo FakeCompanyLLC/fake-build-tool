@@ -3,7 +3,7 @@
 #export PHANTOM_HOME=/pentaho/phantomjs-2.1.1-linux-x86_64
 
 export ANT_HOME=/pentaho/apache-ant-1.10.1
-export MAVEN_HOME=/pentaho/apache-maven-3.3.9
+export MAVEN_HOME=/pentaho/apache-maven-3.5.2
 export RJS_PATH=`which r.js`
 
 #export PATH=$ANT_HOME/bin:$MAVEN_HOME/bin:$PHANTOM_HOME/bin:$PATH

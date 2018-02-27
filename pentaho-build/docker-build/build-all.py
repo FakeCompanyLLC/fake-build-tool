@@ -28,23 +28,22 @@ buildlib.update_progress(time.time() - buildlib.start_time, 1, str(len(projects)
 
 # gather git history
 print "\nGathering git history..."
-commits1y = buildlib.getHistory(cwd, projects, "1 year ago")
-commits180d = buildlib.getHistory(cwd, projects, "180 days ago")
-commits90d = buildlib.getHistory(cwd, projects, "90 days ago")
+#commits1y = buildlib.getHistory(cwd, projects, "1 year ago")
+#commits180d = buildlib.getHistory(cwd, projects, "180 days ago")
+#commits90d = buildlib.getHistory(cwd, projects, "90 days ago")
 commits30d = buildlib.getHistory(cwd, projects, "30 days ago")
 commits7d = buildlib.getHistory(cwd, projects, "7 days ago")
 commits3d = buildlib.getHistory(cwd, projects, "3 days ago")
 commits1d = buildlib.getHistory(cwd, projects, "1 day ago")
 
 print "\nGenerating history reports..."
-buildlib.writeLog(cwd, commits1y, "1 year ago", "1y")
-buildlib.writeLog(cwd, commits180d, "180 days ago", "180d")
-buildlib.writeLog(cwd, commits90d, "90 days ago", "90d")
+#buildlib.writeLog(cwd, commits1y, "1 year ago", "1y")
+#buildlib.writeLog(cwd, commits180d, "180 days ago", "180d")
+#buildlib.writeLog(cwd, commits90d, "90 days ago", "90d")
 buildlib.writeLog(cwd, commits30d, "30 days ago", "30d")
 buildlib.writeLog(cwd, commits7d, "7 days ago", "7d")
 buildlib.writeLog(cwd, commits3d, "3 days ago", "3d")
 buildlib.writeLog(cwd, commits1d, "1 day ago", "1d")
-
 
 # check if changes to ivy.xml or pom.xml exist
 print "\nAnalyzing commit history for possible dependency changes..."
@@ -72,12 +71,12 @@ if indexOfHighestDependencySinceLastBuild == len(projects):
   print "\nNo changes since last build, exiting."
   exit(3)
 
-#indexOfHighestDependencySinceLastBuild = 114
+#indexOfHighestDependencySinceLastBuild = 101
 
 print "Start rebuilding from: " + str(projects[indexOfHighestDependencySinceLastBuild]['name'])
 LAST_BUILD_DATE = int(round(time.time() * 1000))
 
-buildlib.buildProjects(projects, indexOfHighestDependencySinceLastBuild, cwd, buildlog)
+buildlib.buildProjects(projects, indexOfHighestDependencySinceLastBuild, cwd, buildlog, "Last 3 days", "3d")
 
 # update last build date/time
 with open(LASTBUILDDATEPATH, 'w') as lastbuilddatef:

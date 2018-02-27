@@ -7,7 +7,7 @@ SLACK_CHANNEL = os.environ['SLACK_CHANNEL']
 GIT_LOG_SINCE = os.environ['GIT_LOG_SINCE']
 
 CATALINA_PATH = '/pentaho/pentaho-server/tomcat/logs/catalina.out'
-GITLOG_PATH = '/git-storage/gitlog.md'
+GITLOG_PATH = '/git-storage/gitlog3d.md'
 
 #SERVER_STARTUP_TIME = 0 # 5 minutes
 SERVER_STARTUP_TIME = 180 # 4 minutes

@@ -26,7 +26,7 @@ cd $DIR
 #cd ..
 
 # build the pentaho stuff
-cd docker-pentaho
+cd docker-build
 echo "Building [pentaho-build] docker image..."
 #docker build -t pentaho-build:7.1-SNAPSHOT . > /dev/null 2>&1
 #docker build --no-cache -t pentaho-build:7.1-SNAPSHOT .
@@ -35,7 +35,7 @@ docker build -t pentaho-build:8.1.0.0-SNAPSHOT .
 cd ..
 #echo "Starting container... be sure env.list is setup"; sleep 3
 #docker run -it --dns=10.100.2.155 --env-file=env.list --rm -v `pwd`/git-storage:/pentaho/git-storage -v `pwd`/root-storage:/root pentaho-build:8.1.0.0-SNAPSHOT
-docker run -it --env-file=env.list --rm -v `pwd`/git-storage:/pentaho/git-storage -v `pwd`/root-storage:/root pentaho-build:8.1.0.0-SNAPSHOT
+docker run -it --dns=10.100.2.155 --env-file=env.list --rm -v `pwd`/git-storage:/pentaho/git-storage -v `pwd`/root-storage:/root pentaho-build:8.1.0.0-SNAPSHOT
 EXIT_STATUS=$?
 
 # shutdown nexus

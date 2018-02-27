@@ -13,10 +13,14 @@ projects = [
 
   { 'name': 'pentaho-commons-json' },
 
-  { 'name': 'pentaho-commons-database' },
-#    'fork': 'lucboudreau',
-#    'branch': 'pdi14064',
-#    'modules': ['pentaho-database-model'] },
+  { 'name': 'pentaho-kettle',
+    'cmd': ['mvn -Dpentaho.public.snapshot.repo=http://172.17.0.1:8081/nexus/content/repositories/snapshots --non-recursive clean install deploy -DskipTests'] },
+
+  { 'name': 'pentaho-commons-database',
+    'cmd': ['mvn -Dpentaho.public.snapshot.repo=http://172.17.0.1:8081/nexus/content/repositories/snapshots --non-recursive clean install deploy -DskipTests'] },
+
+  { 'name': 'pentaho-commons-database',
+    'modules': ['model'] },
 
   { 'name': 'pentaho-connections' },
 
@@ -34,13 +38,6 @@ projects = [
 #    'branch': 'mondrian2579',
     'cmd': ['mvn -Dpentaho.public.snapshot.repo=http://172.17.0.1:8081/nexus/content/repositories/snapshots --non-recursive clean install deploy -DskipTests'] },
 
-  { 'name': 'pentaho-kettle',
-#    'fork': 'lucboudreau',
-#    'branch': 'pdi14064',
-#    'remotes': [ 'axelguiloff' ],
-#    'cherry-picks': [ '529acb2a74ec3a79eba6c11b756f8a1716999cfc' ],
-    'cmd': ['mvn -Dpentaho.public.snapshot.repo=http://172.17.0.1:8081/nexus/content/repositories/snapshots --non-recursive clean install deploy -DskipTests'] },
-
   { 'name': 'pentaho-reporting',
     'cmd': ['mvn -Dpentaho.public.snapshot.repo=http://172.17.0.1:8081/nexus/content/repositories/snapshots --non-recursive clean install deploy -DskipTests'] },
 
@@ -55,54 +52,45 @@ projects = [
 #    'cherry-picks': [ '78f594fdc4486a4363c16c2f55b1ef4e0684017b' ]
   },
 
-  { 'name': 'pentaho-metadata',
-#    'fork': 'lucboudreau',
-#    'branch': 'pdi14064'
-  },
-
-  { 'name': 'pentaho-reporting',
-    'modules': [ 'engine' ],
-    'properties': [ 'libraries' ] },
-
-  { 'name': 'mondrian',
-#    'fork': 'lucboudreau',
-#    'branch': 'mondrian2579',
-    'modules': ['mondrian'] },
 
   { 'name': 'pentaho-osgi-bundles',
     'properties': [ 'skipDefault' ],
     'profile': 'lowdeps' },
 
+  { 'name': 'mondrian',
+    'modules': ['mondrian'] },
+
   { 'name': 'pentaho-platform',
-#    'remotes': [ 'axelguiloff' ],
-#    'cherry-picks': [ '9c55c1ad0b304d5ae926c80adc4db7ccc9f104a4' ],
     'properties': [ 'skipDefault' ],
     'modules': [ 'api' ] },
 
+  { 'name': 'pentaho-reporting',
+    'modules': [ 'engine' ],
+    'properties': [ 'libraries' ] },
+
   { 'name': 'pentaho-kettle',
-#    'fork': 'lucboudreau',
-#    'branch': 'pdi14064',
-#    'remotes': [ 'axelguiloff' ],
-#    'cherry-picks': [ '529acb2a74ec3a79eba6c11b756f8a1716999cfc' ],
     'properties': [ 'skipDefault' ],
-    'profile': 'base,plugins,lowdeps' },
+    'profile': 'base' },
+
+  { 'name': 'pentaho-metadata' },
+
+  { 'name': 'pentaho-kettle',
+    'properties': [ 'skipDefault' ],
+    'profile': 'plugins,lowdeps' },
 
   { 'name': 'pentaho-chartbeans' },
 
   { 'name': 'pdi-dataservice-plugin' },
 
+  { 'name': 'pentaho-reportwizard-core' },
+
   { 'name': 'pentaho-reporting',
     'modules': [ 'engine' ],
     'properties': [ 'engine' ] },
 
-  { 'name': 'pentaho-reportwizard-core',
-#    'remotes': [ 'axelguiloff' ],
-#    'cherry-picks': [ 'fcd3366bf7089bef9f7a0e83417348fdc3832fcb' ]
-  },
+
 
   { 'name': 'pentaho-platform',
- #   'remotes': [ 'axelguiloff' ],
- #   'cherry-picks': [ '9c55c1ad0b304d5ae926c80adc4db7ccc9f104a4' ],
     'properties': [ 'skipDefault' ],
     'profile' : 'platform-base' },
 
@@ -129,16 +117,18 @@ projects = [
 
   { 'name': 'pdi-palo-core' },
 
-  { 'name': 'pentaho-mongo-utils' },
+  { 'name': 'pentaho-mongo-utils',
+    'remotes': [ 'pentaho-mracine' ],
+    'cherry-picks': [ '23918babf8e2ec0fa07347de5b4a85f74f9e2b4c' ] },
 
-  { 'name': 'pentaho-mongodb-plugin' },
+  { 'name': 'pentaho-mongodb-plugin',
+    'remotes': [ 'pentaho-mracine' ],
+    'cherry-picks': [ '396a7767576aee939600de31fe7d9c7587b2d0d1' ] },
 
   { 'name': 'pentaho-metaverse' },
 
-#  { 'name': 'pentaho-commons-database',
-#    'fork': 'lucboudreau',
-#    'branch': 'pdi14064',
-#    'modules': ['pentaho-database-gwt'] },
+  { 'name': 'pentaho-commons-database',
+    'modules': ['gwt'] },
 
   { 'name': 'modeler' },
 
@@ -200,7 +190,9 @@ projects = [
 
   { 'name': 'marketplace' },
 
-  { 'name': 'pdi-dataservice-server-plugin' },
+  { 'name': 'pdi-dataservice-server-plugin',
+    'remotes': [ 'pentaho-mracine' ],
+    'cherry-picks': [ '8161d8cb94f8090f3df7da05a764c20d4d0d1666' ] },
 
   { 'name': 'pentaho-data-refinery' },
 
@@ -221,7 +213,9 @@ projects = [
     'modules': [ 'adaptive-execution' ],
     'auth': True },
 
-  { 'name': 'pentaho-karaf-assembly' },
+  { 'name': 'pentaho-karaf-assembly',
+    'remotes': [ 'pentaho-mracine' ],
+    'cherry-picks': [ '69f245101e64d04cee4d2f48395db4cdf5d8ebad' ] },
 
   { 'name': 'big-data-plugin',
 #    'remotes': [ 'axelguiloff' ],

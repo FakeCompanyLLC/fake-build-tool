@@ -110,7 +110,6 @@ def updateGit(cwd, f, projects):
         if 'tag' in p or 'branch' in p or 'commit' in p or 'revert-commit' in p:
           call( ["git", "config", "remote.origin.fetch", "+refs/heads/*:refs/remotes/origin/*"], stdout=f, stderr=f )
           update_progress(time.time() - start_time, projIndex/float(len(projects)), str(projIndex+1) + "/" + str(len(projects)) + " " + p['name'] + " [git fetch]")
-          #call( ["git", "fetch", "--unshallow"], stdout=f, stderr=f )
           call( ["git", "fetch"], stdout=f, stderr=f )
         else:
           update_progress(time.time() - start_time, projIndex/float(len(projects)), str(projIndex+1) + "/" + str(len(projects)) + " " + p['name'] + " [git fetch]")
@@ -118,7 +117,6 @@ def updateGit(cwd, f, projects):
 
         call( ["git", "stash"], stdout=f, stderr=f )
         call( ["git", "stash", "clear"], stdout=f, stderr=f )
-        #call( ["git", "checkout", "origin/" + BRANCH], stdout=f, stderr=f )
         call( ["git", "reset", "--hard", "origin/" + BRANCH], stdout=f, stderr=f )
 
         if 'tag' in p:
