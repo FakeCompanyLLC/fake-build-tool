@@ -117,13 +117,9 @@ projects = [
 
   { 'name': 'pdi-palo-core' },
 
-  { 'name': 'pentaho-mongo-utils',
-    'remotes': [ 'pentaho-mracine' ],
-    'cherry-picks': [ '23918babf8e2ec0fa07347de5b4a85f74f9e2b4c' ] },
+  { 'name': 'pentaho-mongo-utils' },
 
-  { 'name': 'pentaho-mongodb-plugin',
-    'remotes': [ 'pentaho-mracine' ],
-    'cherry-picks': [ '396a7767576aee939600de31fe7d9c7587b2d0d1' ] },
+  { 'name': 'pentaho-mongodb-plugin' },
 
   { 'name': 'pentaho-metaverse' },
 
@@ -136,8 +132,7 @@ projects = [
     'fork': 'webdetails' },
 
   { 'name': 'ccc',
-    'fork': 'webdetails',
-    'cmd': ['ant -Divy.repository.publish=http://172.17.0.1:8081/nexus/content/repositories/snapshots clean-all clean-js dist publish publish-local'] },
+    'fork': 'webdetails' },
 
   { 'name': 'cdf',
     'fork': 'webdetails',
@@ -190,9 +185,7 @@ projects = [
 
   { 'name': 'marketplace' },
 
-  { 'name': 'pdi-dataservice-server-plugin',
-    'remotes': [ 'pentaho-mracine' ],
-    'cherry-picks': [ '8161d8cb94f8090f3df7da05a764c20d4d0d1666' ] },
+  { 'name': 'pdi-dataservice-server-plugin' },
 
   { 'name': 'pentaho-data-refinery' },
 
@@ -213,9 +206,7 @@ projects = [
     'modules': [ 'adaptive-execution' ],
     'auth': True },
 
-  { 'name': 'pentaho-karaf-assembly',
-    'remotes': [ 'pentaho-mracine' ],
-    'cherry-picks': [ '69f245101e64d04cee4d2f48395db4cdf5d8ebad' ] },
+  { 'name': 'pentaho-karaf-assembly' },
 
   { 'name': 'big-data-plugin',
 #    'remotes': [ 'axelguiloff' ],

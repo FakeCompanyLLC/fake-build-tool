@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<repository-metadata>
+  <version>1.0.0</version>
+  <url>http://10.177.176.248/content/repositories/omni/</url>
+  <id>private-omni</id>
+  <name>private-omni</name>
+  <layout>maven2</layout>
+  <policy>release</policy>
+  <localUrl>@rootUrl@/content/repositories/private-omni</localUrl>
+</repository-metadata>
