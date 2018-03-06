@@ -1,4 +1,17 @@
-# name, url, modules, cmd
+#
+# { 'name': 'git-repository-name',
+#   'fork': 'pentaho', #specify if not default
+#   'branch': 'feature-branch', #specify a branch to build
+#   'auth': True, #specify if github auth required
+#   'remotes': [ 'mdamour1976', 'someone' ], #add additional remotes
+#   'cherry-picks': [ 'commit-sha1', 'commit-sha2' ], #cherry-picks to apply
+#   'reverts': [ 'commit-sha1', 'commit-sha2' ], #commits to revert
+#   'profile': 'maven-profile', #maven profile to build
+#   'modules': [ 'module-path1', 'module-path2' ], #maven modules to build
+#   'properties': [ 'property1', property2' ], #maven properties to set
+#   'cmd': [ 'any command you want', 'cmd2' ] # execute arbitrary commands in project
+# }
+
 projects = [
 
   { 'name': 'maven-parent-poms' },
@@ -29,13 +42,9 @@ projects = [
   { 'name': 'pentaho-versionchecker' },
 
   { 'name': 'pentaho-platform',
-#    'remotes': [ 'axelguiloff' ],
-#    'cherry-picks': [ '9c55c1ad0b304d5ae926c80adc4db7ccc9f104a4' ],
     'cmd': ['mvn -Dpentaho.public.snapshot.repo=http://172.17.0.1:8081/nexus/content/repositories/snapshots --non-recursive clean install deploy -DskipTests'] },
 
   { 'name': 'mondrian',
-#    'fork': 'lucboudreau',
-#    'branch': 'mondrian2579',
     'cmd': ['mvn -Dpentaho.public.snapshot.repo=http://172.17.0.1:8081/nexus/content/repositories/snapshots --non-recursive clean install deploy -DskipTests'] },
 
   { 'name': 'pentaho-reporting',
@@ -47,11 +56,7 @@ projects = [
     'modules': [ 'libraries' ],
     'properties': [ 'libraries' ] },
 
-  { 'name': 'pentaho-registry',
-#    'remotes': [ 'axelguiloff' ],
-#    'cherry-picks': [ '78f594fdc4486a4363c16c2f55b1ef4e0684017b' ]
-  },
-
+  { 'name': 'pentaho-registry' },
 
   { 'name': 'pentaho-osgi-bundles',
     'properties': [ 'skipDefault' ],
@@ -87,8 +92,6 @@ projects = [
   { 'name': 'pentaho-reporting',
     'modules': [ 'engine' ],
     'properties': [ 'engine' ] },
-
-
 
   { 'name': 'pentaho-platform',
     'properties': [ 'skipDefault' ],
@@ -149,20 +152,13 @@ projects = [
     'profile': 'highdeps' },
 
   { 'name': 'pentaho-kettle',
-#    'fork': 'lucboudreau',
-#    'branch': 'pdi14064',
-#    'remotes': [ 'axelguiloff' ],
-#    'cherry-picks': [ '529acb2a74ec3a79eba6c11b756f8a1716999cfc' ],
     'modules': [ 'plugins' ],
     'profile': 'highdeps' },
 
   { 'name': 'data-access' },
 
   { 'name': 'cda',
-    'fork': 'webdetails'
-#    'remotes': [ 'axelguiloff' ],
-#    'cherry-picks': [ 'd48b31e1063cf1d066176b4cb7d2c05e47db8ab6' ]
-  },
+    'fork': 'webdetails' },
 
   { 'name': 'cde',
     'deploy': True,
@@ -190,45 +186,22 @@ projects = [
   { 'name': 'pentaho-data-refinery' },
 
   { 'name': 'big-data-plugin',
-#    'remotes': [ 'axelguiloff' ],
-#    'cherry-picks': [ '1a363b58fb56fd433adcc460eb4c59359696c162' ],
     'cmd': ['mvn --non-recursive clean install -DskipTests'] },
 
   { 'name': 'big-data-plugin',
-#    'remotes': [ 'axelguiloff' ],
-#    'cherry-picks': [ '1a363b58fb56fd433adcc460eb4c59359696c162' ],
     'properties': [ 'featuresOnly' ] },
 
   { 'name': 'pentaho-ee',
     'remotes': [ 'mdamour1976' ],
-#    'cherry-picks': [ '955e37095916d6f8170b7a6583ebdd6f851d2de1' ],
-#    'rebases': [ 'mdamour1976/resolvefix' ],
     'modules': [ 'adaptive-execution' ],
     'auth': True },
 
   { 'name': 'pentaho-karaf-assembly' },
 
-  { 'name': 'big-data-plugin',
-#    'remotes': [ 'axelguiloff' ],
-#    'cherry-picks': [ '1a363b58fb56fd433adcc460eb4c59359696c162' ],
-  },
-
-#  { 'name': 'pentaho-ee',
-#    'remotes': [ 'mdamour1976' ],
-#    'cherry-picks': [ '955e37095916d6f8170b7a6583ebdd6f851d2de1' ],
-#    'rebases': [ 'mdamour1976/resolvefix' ],
-#    'auth': True },
+  { 'name': 'big-data-plugin' },
 
   { 'name': 'cgg',
     'fork': 'webdetails' },
-#    'modules': ['cgg-core'] },
-
-#  { 'name': 'cgg',
-#    'fork': 'webdetails' },
-
-#  { 'name': 'cpk',
-#    'fork': 'webdetails',
-#    'modules': ['cpk-core'] },
 
   { 'name': 'cpk',
     'fork': 'webdetails' },
@@ -246,33 +219,16 @@ projects = [
   { 'name': 'pentaho-vertica-bulkloader' },
 
   { 'name': 'pentaho-platform',
-#    'remotes': [ 'axelguiloff' ],
-#    'cherry-picks': [ '9c55c1ad0b304d5ae926c80adc4db7ccc9f104a4' ],
     'properties': [ 'skipDefault' ],
     'profile': 'platform-user-console',
     'deploy': True },
 
-  # begin attempt to build assembly-ee
-  # version.for.license=7.1-SNAPSHOT
-  { 'name': 'pentaho-ee-license',
-    'auth': True,
-    'modules': [ 'pentaho-ee-license-core' ],
-    'cmd': [ 'ant -Divy.repository.publish=http://172.17.0.1:8081/nexus/content/repositories/snapshots clean-all resolve jar obfuscate publish-local publish-nojar' ] },
-
-  { 'name': 'pentaho-ee-license',
-    'auth': True,
-    'modules': [ 'pentaho-ee-mock-license' ] },
-
   { 'name': 'maven-parent-poms-ee',
     'auth': True },
 
-  { 'name': 'pentaho-metadata-ee',
-    'auth': True },
-
   { 'name': 'pentaho-ee-license',
-    'auth': True,
-    'modules': [ 'pentaho-ee-license-installer' ],
-    'cmd': [ 'ant -Divy.repository.publish=http://172.17.0.1:8081/nexus/content/repositories/snapshots -buildfile assembly.xml clean-all resolve assemble package-zip create-pom publish-nojar' ] },
+    'properties': [ 'release' ],
+    'auth': True },
 
   { 'name': 'pentaho-platform-ee',
     'auth': True,
@@ -290,10 +246,6 @@ projects = [
 
   { 'name': 'pentaho-platform-plugin-geo',
     'auth': True },
-
-#  { 'name': 'pentaho-platform-plugin-jpivot' },
-#  { 'name': 'pentaho-platform-plugin-jpivot',
-#    'cmd': ['ant -Divy.repository.publish=http://172.17.0.1:8081/nexus/content/repositories/snapshots -buildfile build-disabled.xml clean-all resolve dist publish-local'] },
 
   { 'name': 'pdi-ee-plugin',
     'auth': True },
@@ -315,7 +267,6 @@ projects = [
   { 'name': 'pentaho-eula-wrap-config',
     'auth': True },
 
-  # base, assemblies
   { 'name': 'pentaho-big-data-ee',
     'auth': True },
 #    'profile': 'assemblies,hdp26,cdh512,mapr520',
@@ -340,9 +291,6 @@ projects = [
   { 'name': 'pentaho-camel-components',
     'auth': True },
 
-#  { 'name': 'pentaho-mongolap',
-#    'auth': True },
-
   { 'name': 'pentaho-det',
     'auth': True },
 
@@ -357,32 +305,24 @@ projects = [
     'auth': True },
 
   { 'name': 'pentaho-ee',
-    'remotes': [ 'mdamour1976' ],
-#    'cherry-picks': [ '955e37095916d6f8170b7a6583ebdd6f851d2de1' ],
-#    'rebases': [ 'mdamour1976/resolvefix' ],
     'auth': True,
     'modules': [ 'foundry' ] },
 
   { 'name': 'pentaho-ee',
-    'remotes': [ 'mdamour1976' ],
-#    'cherry-picks': [ '955e37095916d6f8170b7a6583ebdd6f851d2de1' ],
-#    'rebases': [ 'mdamour1976/resolvefix' ],
     'auth': True,
     'modules': [ 'platform/plugins/worker-nodes' ] },
+
+  { 'name': 'pentaho-ee',
+    'auth': True,
+    'modules': [ 'data-integration/plugins/scale' ] },
 
   { 'name': 'pentaho-karaf-ee-assembly',
     'auth': True },
 
   { 'name': 'pentaho-kettle',
-#    'fork': 'lucboudreau',
-#    'branch': 'pdi14064',
-#    'remotes': [ 'axelguiloff' ],
-#    'cherry-picks': [ '529acb2a74ec3a79eba6c11b756f8a1716999cfc' ],
     'profile': 'assemblies' },
 
   { 'name': 'pentaho-platform',
-#    'remotes': [ 'axelguiloff' ],
-#    'cherry-picks': [ '9c55c1ad0b304d5ae926c80adc4db7ccc9f104a4' ],
     'profile': 'platform-assemble',
     'properties': [ 'skipDefault' ] },
 
@@ -408,22 +348,10 @@ projects = [
     'auth': True },
 
   { 'name': 'pentaho-platform-plugin-dashboards',
-#    'fork': 'mdamour1976',
-#    'branch': 'mdd',
-#    'remotes': [ 'mdamour1976' ],
-#    'cherry-picks': [ 'e40376710554ec44c68dabbbd6147b004334d58c' ],
     'auth': True },
 
   { 'name': 'pentaho-platform-plugin-interactive-reporting',
     'auth': True },
-
-#  { 'name': 'pentaho-ee',
-#    'remotes': [ 'mdamour1976' ],
-#    'cherry-picks': [ '955e37095916d6f8170b7a6583ebdd6f851d2de1' ],
-#    'rebases': [ 'mdamour1976/resolvefix' ],
-#    'auth': True,
-#    'modules': [ 'data-integration/assemblies/client' ],
-#    'cmd': [ 'ant -f assembly.xml clean-all resolve di-package' ] },
 
 #  { 'name': 'mondrian',
 #    'modules': [ 'workbench' ] },
